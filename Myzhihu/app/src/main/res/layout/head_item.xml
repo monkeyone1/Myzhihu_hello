@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+             android:id="@+id/fl_parent"
+             android:layout_width="match_parent"
+             android:layout_height="230dp">
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/vp_barner"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+    </android.support.v4.view.ViewPager>
+    <TextView
+        android:id="@+id/tv_head_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:lines="2"
+        android:layout_above="@+id/circle_barner"
+        android:textColor="#fff"
+        android:textSize="18sp"/>
+    <com.viewpagerindicator.CirclePageIndicator
+    android:id="@+id/circle_barner"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_alignParentBottom="true"
+    android:layout_centerVertical="true"
+    android:padding="10dp">
+    </com.viewpagerindicator.CirclePageIndicator>
+
+
+</RelativeLayout>
