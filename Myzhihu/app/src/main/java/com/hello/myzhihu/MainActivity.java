@@ -25,6 +25,7 @@ import com.hello.myzhihu.bean.NewsData;
 import com.hello.myzhihu.bean.NewsHot;
 import com.hello.myzhihu.connom.AppNetConfig;
 import com.hello.myzhihu.utils.utils;
+import com.jcodecraeer.xrecyclerview.ProgressStyle;
 import com.jcodecraeer.xrecyclerview.XRecyclerView;
 import com.squareup.picasso.Picasso;
 import com.zhy.http.okhttp.OkHttpUtils;
@@ -82,7 +83,7 @@ public class MainActivity extends AppCompatActivity {
         toolbar.setTitleTextColor(Color.parseColor("#FFFFFF"));
         toolbar.setSubtitleTextColor(Color.parseColor("#FFFFFF"));
         setSupportActionBar(toolbar);
-        swRelayout.setColorSchemeResources(android.R.color.holo_blue_dark);
+        swRelayout.setColorSchemeResources(android.R.color.holo_blue_dark,android.R.color.holo_blue_light);
         swRelayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
@@ -91,6 +92,8 @@ public class MainActivity extends AppCompatActivity {
             }
         });
         rvNews.setPullRefreshEnabled(false);
+        rvNews.setLoadingMoreProgressStyle(ProgressStyle.Pacman);
+
 //        rvNews.setLoadingListener(new XRecyclerView.LoadingListener()
 //        {
 //            public void onLoadMore()

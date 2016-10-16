@@ -2,7 +2,6 @@ package com.hello.myzhihu.adapter;
 
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.drawable.Drawable;
 import android.os.Handler;
 import android.os.Message;
 import android.support.v4.view.PagerAdapter;
@@ -13,19 +12,14 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-
 import com.hello.myzhihu.ContentActivity;
 import com.hello.myzhihu.R;
 import com.hello.myzhihu.bean.NewsData;
-import com.hello.myzhihu.bean.NewsHot;
 import com.hello.myzhihu.connom.AppNetConfig;
 import com.squareup.picasso.Picasso;
 import com.viewpagerindicator.CirclePageIndicator;
 
 import java.util.List;
-
-import butterknife.BindView;
-import butterknife.ButterKnife;
 
 /**
  * Created by hello on 2016/8/22.
@@ -38,12 +32,9 @@ public class NewDataAdapter extends RecyclerView.Adapter<NewDataAdapter.MyViewHo
     private static View headerinflate;
     private static int mHeaderView = -1;
     private Handler mHandler;
-    private ImageView[] mImageViews;
     private LayoutInflater mInflater;
     private OnItemClickLitener mOnItemClickLitener;
     private Context mcontext;
-    private int pos;
-
     private List<NewsData.StoriesBean> stories = null;
     private List<NewsData.TopStoriesBean> top_stories;
 

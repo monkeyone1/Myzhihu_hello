@@ -24,6 +24,8 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import okhttp3.Call;
 
+import static android.R.attr.data;
+
 public class ContentActivity extends AppCompatActivity {
 
     private static final String TAG = "CONTENT";
@@ -118,11 +120,16 @@ public class ContentActivity extends AppCompatActivity {
         settings.setJavaScriptEnabled(true);
         settings.setCacheMode(WebSettings.LOAD_CACHE_ELSE_NETWORK);
         // 开启DOM storage API 功能
-       settings.setDomStorageEnabled(true);
-
+        settings.setDomStorageEnabled(true);
+        // 开启database storage API功能
+        settings.setDatabaseEnabled(true);
+        // 开启Application Cache功能
+        settings.setAppCacheEnabled(true);
         // settings.setLayoutAlgorithm(WebSettings.LayoutAlgorithm.NARROW_COLUMNS);
         String css = "<link rel=\"stylesheet\" href=\"file:///android_asset/news_qa.auto.css\" type=\"text/css\">";
-        String html = "<html><head>" + css + "</head><body>" + body + "</body></html>";
+        String html = "<html><head>" + css + "</head><body>" + body+ "</body></html>";
+        //取消webview头布局的空白处
+        html = html.replace("<div class=\"img-place-holder\">", "");
         wvNewsContent.loadDataWithBaseURL("x-data://base", html, "text/html", "utf-8", null);
 
     }
