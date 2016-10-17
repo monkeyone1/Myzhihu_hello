@@ -21,6 +21,8 @@ import com.viewpagerindicator.CirclePageIndicator;
 
 import java.util.List;
 
+import me.relex.circleindicator.CircleIndicator;
+
 /**
  * Created by hello on 2016/8/22.
  */
@@ -155,8 +157,9 @@ public class NewDataAdapter extends RecyclerView.Adapter<NewDataAdapter.MyViewHo
                     container.removeView((View) object);
                 }
             });
-            holder.circlePageIndicator.setViewPager(holder.vpBarner);
-            holder.circlePageIndicator.setSnap(true);
+
+            holder.indicator.setViewPager(holder.vpBarner);
+
             if (mHandler == null)
             {
                 mHandler = new Handler()
@@ -205,7 +208,7 @@ public class NewDataAdapter extends RecyclerView.Adapter<NewDataAdapter.MyViewHo
 
     static class MyViewHolder extends RecyclerView.ViewHolder {
 
-        CirclePageIndicator circlePageIndicator;
+        CircleIndicator indicator;
         TextView tvTitle;
         ViewPager vpBarner;
         TextView tvNewsTitle;
@@ -217,7 +220,7 @@ public class NewDataAdapter extends RecyclerView.Adapter<NewDataAdapter.MyViewHo
             if (itemView == headerinflate) {
                 vpBarner = ((ViewPager) itemView.findViewById(R.id.vp_barner));
                 tvTitle = ((TextView) itemView.findViewById(R.id.tv_head_title));
-                circlePageIndicator = ((CirclePageIndicator) itemView.findViewById(R.id.circle_barner));
+                indicator = (CircleIndicator) itemView.findViewById(R.id.indicator);
                 return;
             }
                 tvNewsTitle = (TextView) itemView.findViewById(R.id.tv_news_title);

@@ -32,5 +32,6 @@ dependencies {
     apt 'com.jakewharton:butterknife-compiler:8.2.1'
     compile 'com.android.support:design:24.1.1'
     compile 'com.jcodecraeer:xrecyclerview:1.2.7'
-    compile project(':library')
+    compile 'de.hdodenhof:circleimageview:2.1.0'
+    compile 'me.relex:circleindicator:1.2.2@aar'
 }

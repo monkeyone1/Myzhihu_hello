@@ -1,5 +1,7 @@
 <resources>
     <string name="app_name">我的知乎日报</string>
+    <string name="open">OPEN</string>
+    <string name="close">close</string>
 
 
 </resources>

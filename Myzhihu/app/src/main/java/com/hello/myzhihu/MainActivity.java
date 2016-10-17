@@ -2,10 +2,13 @@ package com.hello.myzhihu;
 
 import android.content.Intent;
 import android.graphics.Color;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
+import android.support.v4.widget.DrawerLayout;
 import android.support.v4.widget.SwipeRefreshLayout;
+import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -36,12 +39,12 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import okhttp3.Call;
 
+import static android.R.attr.action;
+
 public class MainActivity extends AppCompatActivity {
 
 
     private static final String TAG = "Test";
-    //    @BindView(R.id.rv_news)
-//    RecyclerView rvNews;
     @BindView(R.id.rv_news)
     XRecyclerView rvNews;
     @BindView(R.id.pb_load)
@@ -50,13 +53,11 @@ public class MainActivity extends AppCompatActivity {
     Toolbar toolbar;
     @BindView(R.id.sw_relayout)
     SwipeRefreshLayout swRelayout;
-    //  //  @BindView(R.id.vp_barner)
-//    ViewPager vpBarner;
     private String date;
     private NewsData newsData;
     private NewDataAdapter newDataAdapter;
     private View headerview;
-    private NewsHot newsHot;
+
     private ViewPager viewPager;
 
 
@@ -75,15 +76,12 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void initView() {
+        initToolbar();
         headerview = View.inflate(this, R.layout.head_item, null);
         //  headerview = mInflater.inflate(R.layout.head_item,rvNews, false);
         viewPager = (ViewPager) headerview.findViewById(R.id.vp_barner);
-        toolbar.setTitle("知乎日报");
-        toolbar.setSubtitle("属于我自己的知乎");
-        toolbar.setTitleTextColor(Color.parseColor("#FFFFFF"));
-        toolbar.setSubtitleTextColor(Color.parseColor("#FFFFFF"));
-        setSupportActionBar(toolbar);
-        swRelayout.setColorSchemeResources(android.R.color.holo_blue_dark,android.R.color.holo_blue_light);
+
+        swRelayout.setColorSchemeResources(android.R.color.holo_blue_dark, android.R.color.holo_blue_light);
         swRelayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
@@ -124,6 +122,21 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+    private void initToolbar() {
+        toolbar.setTitle("知乎日报");//设置Toolbar标题
+        toolbar.setSubtitle("属于我自己的知乎");
+        toolbar.setTitleTextColor(Color.parseColor("#FFFFFF"));//设置标题颜色
+        toolbar.setSubtitleTextColor(Color.parseColor("#FFFFFF"));
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setHomeButtonEnabled(true);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        //创建返回键，并实现打开关/闭监听
+        DrawerLayout drawerLayout = (DrawerLayout) findViewById(R.id.dl_news);
+        ActionBarDrawerToggle actionBarDrawerToggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar, R.string.open, R.string.close);
+        actionBarDrawerToggle.syncState(); //同步
+        drawerLayout.setDrawerListener(actionBarDrawerToggle);
+    }
+
     private void loadMore() {
         (OkHttpUtils.get()
                 .url(AppNetConfig.BEFORE + date))
@@ -149,7 +162,7 @@ public class MainActivity extends AppCompatActivity {
 
 
     /**
-     * 获取说有数据
+     * 获取所有数据
      */
     public void getServiceData(String url) {
         OkHttpUtils
@@ -235,73 +248,5 @@ public class MainActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    /*
-    *
-    * 获取热门信息
-    * */
-//    public void getHotData() {
-//        OkHttpUtils.get()
-//                .url(AppNetConfig.HOT)
-//                .build()
-//                .execute(new StringCallback() {
-//                    @Override
-//                    public void onError(Call call, Exception e, int id) {
-//                        utils.ShowToast(MainActivity.this, "网络请求失败");
-//                    }
-//
-//                    @Override
-//                    public void onResponse(String response, int id) {
-////                        Log.d(TAG, "onResponse: " + response);
-//                        System.out.println("+++++++++++" + response);
-//                        progresshot(response);
-//                    }
-//                });
-//
-//    }
 
-//    private void progresshot(String response) {
-//        Gson gson = new Gson();
-//        newsHot = gson.fromJson(response, NewsHot.class);
-//        if (newsHot != null) {
-//
-////            topNewsAdapter = new TopNewsAdapter();
-////            viewPager.setAdapter(topNewsAdapter);
-//
-//        }
-//
-//    }
-
-//    private class TopNewsAdapter extends PagerAdapter {
-//
-//
-//        @Override
-//        public int getCount() {
-//            int count = 5;
-//            return count;
-//        }
-//
-//        @Override
-//        public boolean isViewFromObject(View view, Object object) {
-//            return view == object;
-//        }
-//
-//        @Override
-//        public Object instantiateItem(ViewGroup container, int position) {
-//            String thumbnail = newsHot.getRecent().get(position).getThumbnail();
-//            System.out.println("++++++++++++++++++++" + thumbnail);
-//            Log.e(TAG, "instantiateItem: " + thumbnail);
-//            ImageView view = new ImageView(MainActivity.this);
-//
-//            Picasso.with(MainActivity.this).load(thumbnail).into(view);
-//            //Picasso.with(MainActivity.this).load(thumbnail).into(view);
-//            view.setScaleType(ImageView.ScaleType.FIT_XY);
-//            container.addView(view);
-//            return view;
-//        }
-//
-//        @Override
-//        public void destroyItem(ViewGroup container, int position, Object object) {
-//            container.removeView((View) object);
-//        }
-//    }
 }
