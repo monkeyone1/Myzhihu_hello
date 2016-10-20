@@ -17,7 +17,7 @@ import com.hello.myzhihu.R;
 import com.hello.myzhihu.bean.NewsData;
 import com.hello.myzhihu.connom.AppNetConfig;
 import com.squareup.picasso.Picasso;
-import com.viewpagerindicator.CirclePageIndicator;
+
 
 import java.util.List;
 

@@ -18,14 +18,7 @@
         android:layout_above="@+id/indicator"
         android:textColor="#fff"
         android:textSize="18sp"/>
-    <!--<com.viewpagerindicator.CirclePageIndicator-->
-    <!--android:id="@+id/circle_barner"-->
-    <!--android:layout_width="match_parent"-->
-    <!--android:layout_height="wrap_content"-->
-    <!--android:layout_alignParentBottom="true"-->
-    <!--android:layout_centerVertical="true"-->
-    <!--android:padding="10dp">-->
-    <!--</com.viewpagerindicator.CirclePageIndicator>-->
+
     <me.relex.circleindicator.CircleIndicator
         android:id="@+id/indicator"
         android:layout_width="match_parent"
