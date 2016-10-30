@@ -3,13 +3,7 @@
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
-    <!--<color name="primary">#9E9E9E</color>-->
-    <!--<color name="primary_dark">#616161</color>-->
-    <!--<color name="primary_light">#F5F5F5</color>-->
-    <!--<color name="accent">#607D8B</color>-->
-    <!--<color name="primary_text">#212121</color>-->
-    <!--<color name="secondary_text">#757575</color>-->
-    <!--<color name="icons">#212121</color>-->
+
     <!--<color name="divider">#BDBDBD</color>-->
     <color name="primary">#3F51B5</color>
     <color name="primary_dark">#303F9F</color>
@@ -21,6 +15,17 @@
     <color name="divider">#BDBDBD</color>
 
 
+    <!--night配色-->
+    <color name="primary_night">#212121</color>
+    <color name="primary_dark_night">#000000</color>
+    <color name="primary_light_night">#99212121</color>
+    <color name="primary_text_night">#ffffff</color>
+    <color name="secondary_text_night">#fefefe</color>
+    <color name="icons_night">#FFFFFF</color>
+    <color name="divider_night">#a5FFFFFF</color>
+    <color name="background_color_night">#303030</color>
+    <color name="item_color_night">#404040</color>
+    <color name="fab_color_night">#ddffab00</color>
 
 </resources>
 

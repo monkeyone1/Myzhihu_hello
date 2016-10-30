@@ -1,5 +1,6 @@
 package com.hello.myzhihu;
 
+import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.design.widget.CollapsingToolbarLayout;
@@ -11,6 +12,7 @@ import android.util.Log;
 import android.view.View;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
+import android.webkit.WebViewClient;
 import android.widget.ImageView;
 
 import com.google.gson.Gson;
@@ -148,9 +150,8 @@ public class ContentActivity extends AppCompatActivity {
 
             }
         });
-
-        //       if (!TextUtils.isEmpty(url)) {
-        //          wvNewsContent.loadUrl(url);
+//        if (!TextUtils.isEmpty(url)) {
+//            wvNewsContent.loadUrl(url);
 //            WebSettings settings = wvNewsContent.getSettings();
 //            settings.setJavaScriptEnabled(true);
 //
@@ -174,7 +175,8 @@ public class ContentActivity extends AppCompatActivity {
 //
 //        } else {
 //            utils.ShowToast(this, "信息为空");
-        //  }
-
-    }
+//        }
+//
+//
+  }
 }

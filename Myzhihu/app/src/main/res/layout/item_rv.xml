@@ -3,15 +3,19 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:card_view="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="120dp"
+    android:layout_height="100dp"
+    android:background="?attr/itemBackground"
     android:layout_margin="5dp"
     card_view:cardCornerRadius="3dp"
-    card_view:cardElevation="8dp">
+    card_view:cardElevation="3dp"
+
+
+   >
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/recycler_bg"
+        android:background="?attr/itemBackground"
         android:gravity="center"
         android:orientation="horizontal"
         android:padding="10dp">
@@ -19,8 +23,9 @@
         <TextView
             android:id="@+id/tv_news_title"
             android:layout_width="0dp"
-            android:layout_height="95dp"
+            android:layout_height="85dp"
             android:layout_weight="1"
+            android:textColor="?attr/text_color"
             android:lines="3"
             android:textSize="17sp"/>
 

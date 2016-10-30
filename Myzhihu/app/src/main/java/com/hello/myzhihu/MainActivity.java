@@ -59,11 +59,14 @@ public class MainActivity extends AppCompatActivity {
     private View headerview;
 
     private ViewPager viewPager;
-
+    public static int currentTheme = R.style.MyAppTheme;//当前主题
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        if(currentTheme!=-1){
+            setTheme(currentTheme);
+        }
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
 
@@ -92,21 +95,7 @@ public class MainActivity extends AppCompatActivity {
         rvNews.setPullRefreshEnabled(false);
         rvNews.setLoadingMoreProgressStyle(ProgressStyle.Pacman);
 
-//        rvNews.setLoadingListener(new XRecyclerView.LoadingListener()
-//        {
-//            public void onLoadMore()
-//            {
-//                if (newsData.getDate() == null)
-//                {
-//                    String str = newsData.getDate();
-//                    getServiceData(AppNetConfig.BEFORE+ str);
-//                }
-//            }
-//
-//            public void onRefresh()
-//            {
-//            }
-//        });
+
         /**
          * 解决swipeRefreshLayout和Recyclerview 滑动冲突
          *
@@ -125,8 +114,8 @@ public class MainActivity extends AppCompatActivity {
     private void initToolbar() {
         toolbar.setTitle("知乎日报");//设置Toolbar标题
         toolbar.setSubtitle("属于我自己的知乎");
-        toolbar.setTitleTextColor(Color.parseColor("#FFFFFF"));//设置标题颜色
-        toolbar.setSubtitleTextColor(Color.parseColor("#FFFFFF"));
+//        toolbar.setTitleTextColor(Color.parseColor("#FFFFFF"));//设置标题颜色
+//        toolbar.setSubtitleTextColor(Color.parseColor("#FFFFFF"));
         setSupportActionBar(toolbar);
         getSupportActionBar().setHomeButtonEnabled(true);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -242,10 +231,25 @@ public class MainActivity extends AppCompatActivity {
         int itemId = item.getItemId();
         switch (itemId) {
             case R.id.action_settings:
+                switchTheme();
+
                 break;
         }
 
         return super.onOptionsItemSelected(item);
+    }
+    /**
+     * 切换主题
+     */
+    private void switchTheme() {
+        if(currentTheme==R.style.MyAppTheme){
+            currentTheme= R.style.nightAppTheme;
+        }else {
+            currentTheme= R.style.MyAppTheme;
+        }
+        //重新创建activity，使theme生效
+        recreate();
+
     }
 
 

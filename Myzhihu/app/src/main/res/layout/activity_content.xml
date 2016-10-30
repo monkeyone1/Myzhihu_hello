@@ -11,6 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="230dp"
         android:fitsSystemWindows="true"
+        android:background="?attr/toolbarTheme"
         android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
         app:theme="@style/Base.ThemeOverlay.AppCompat.Dark.ActionBar">
         <!--使用CollapsingToolbarLayout时必须把title设置到CollapsingToolbarLayout上，设置到Toolbar上不会显示。即：
@@ -24,8 +25,9 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:fitsSystemWindows="true"
+            app:collapsedTitleTextAppearance="@style/TextAppearance.CollapsedTitle"
             app:contentScrim="?attr/colorPrimaryDark"
-            app:expandedTitleMarginStart="2dp"
+            app:expandedTitleMarginStart="5dp"
             app:layout_scrollFlags="scroll|exitUntilCollapsed">
             <!--
                      scroll - 想滚动就必须设置这个。
@@ -50,6 +52,7 @@
                 android:id="@+id/toolbar"
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
+
                 app:layout_collapseMode="pin"
                 app:layout_scrollFlags="scroll|exitUntilCollapsed">
 
