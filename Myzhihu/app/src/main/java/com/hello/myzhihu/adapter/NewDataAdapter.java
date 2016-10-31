@@ -114,14 +114,16 @@ public class NewDataAdapter extends RecyclerView.Adapter<NewDataAdapter.MyViewHo
 
     @Override
     public void onBindViewHolder(final MyViewHolder holder, int position) {
-        if (position == 0 && headerinflate != null) {
+        if (position == 0 && headerinflate != null&&mHeaderView!=-1) {
             holder.tvTitle.setText(top_stories.get(position).getTitle());
             holder.vpBarner.setAdapter(new PagerAdapter() {
                 @Override
                 public int getCount() {
-                    if (NewDataAdapter.this.top_stories == null)
+                    if (NewDataAdapter.this.top_stories == null){
                         return 0;
-                    return NewDataAdapter.this.top_stories.size();
+                    }else {  return NewDataAdapter.this.top_stories.size();}
+
+
                 }
 
                 @Override
@@ -200,9 +202,13 @@ public class NewDataAdapter extends RecyclerView.Adapter<NewDataAdapter.MyViewHo
 
     @Override
     public int getItemCount() {
-        if (headerinflate == null)
+        if (headerinflate == null){
             return stories == null ? 0 : stories.size();
-        return stories == null ? 0 : stories.size() + 1;
+        }else {
+            return stories == null ? 0 : stories.size() + 1;
+        }
+
+
     }
 
 

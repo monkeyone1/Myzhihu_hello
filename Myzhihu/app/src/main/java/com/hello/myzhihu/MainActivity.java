@@ -59,7 +59,8 @@ public class MainActivity extends AppCompatActivity {
     private View headerview;
 
     private ViewPager viewPager;
-    public static int currentTheme = R.style.MyAppTheme;//当前主题
+
+    public static int currentTheme = utils.getPref();//当前主题
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -212,7 +213,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onItemClick(View view, int position) {
                 Intent intent = new Intent(MainActivity.this, ContentActivity.class);
-                int id = MainActivity.this.newsData.getStories().get(position - 1).getId();
+                int id = MainActivity.this.newsData.getStories().get(position-2).getId();
                 intent.putExtra("url", AppNetConfig.BASEURL + id);
                 // Log.d(TAG, "onItemClick: " + AppNetConfig.BASEURL + id);
                 startActivity(intent);
@@ -244,8 +245,10 @@ public class MainActivity extends AppCompatActivity {
     private void switchTheme() {
         if(currentTheme==R.style.MyAppTheme){
             currentTheme= R.style.nightAppTheme;
+            utils.setPref(R.style.nightAppTheme);
         }else {
             currentTheme= R.style.MyAppTheme;
+            utils.setPref(R.style.MyAppTheme);
         }
         //重新创建activity，使theme生效
         recreate();
